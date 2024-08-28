@@ -1,0 +1,699 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+/* Tüm öğeler için varsayılan kutu modelini ayarlar ve margin, padding değerlerini sıfırlar */
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Header için yüksekliği ve arka plan rengini tanımlar */
+    --header-outer-height: 110px;
+    --header-inner-height: 70px;
+    --header-bg: #fff;
+    --color: #3c3163;
+    --transition-time: 0.5s;
+}
+
+/* Sayfa genelindeki font ve arka plan rengini ayarlar */
+body {
+    font-family: "DM Sans", sans-serif;
+    background-color: #f2f5f7;
+    line-height: 1.5;
+    min-height: 100vh;
+
+}
+
+
+a {
+    color: inherit;
+}
+
+
+/* Sticky (sabit) konumda olan header stilini ayarlar */
+.header-outer {
+    height: var(--header-outer-height);
+    position: fixed;
+    /* Header'ı sabit konumda tutar */
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Diğer içeriklerin üstünde olmasını sağlar */
+}
+
+/* Header içeriğinin stilini tanımlar ve merkezde hizalar */
+.header-inner {
+    height: var(--header-inner-height);
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo metninin stilini ayarlar */
+.logo-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Navigasyon menüsünün stilini ve hizalamasını belirler */
+.header-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+/* Navigasyon linkleri ve butonlarının stilini tanımlar */
+.header-navigation a,
+.header-navigation button {
+    font-size: 1.125rem;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    /* Position relative ekledik */
+}
+
+/* Navigasyon butonlarının görünümünü ayarlar */
+.header-navigation button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Navigasyon linkleri ve butonları üzerine gelindiğinde alt çizgi efekti */
+.header-navigation a:hover:after,
+.header-navigation button:hover:after {
+    transform: scaleX(1);
+}
+
+/* Navigasyon linkleri ve butonlarındaki alt çizgi efekti */
+.header-navigation a:after,
+.header-navigation button:after {
+    transition: 0.25s ease;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+/* Menü butonunun mobil görünümde nasıl görüneceğini ayarlar */
+@media (min-width: 800px) {
+    .header-navigation a {
+        display: inline-block;
+    }
+
+    .header-navigation button {
+        display: none;
+    }
+}
+
+/* Ana içerik alanının stilini tanımlar ve header yüksekliği kadar boşluk bırakır */
+main {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    margin-top: var(--header-outer-height);
+    /* Navigation bar yüksekliği kadar boşluk bırak */
+}
+
+/* İçerik bölümü stilini ayarlar */
+.content-section {
+    flex: 3;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+
+/* İçerik bölümünün sol kenarında renkli bir şerit ekler */
+.content-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* İçerik bölümündeki başlıkların stilini ayarlar */
+.content-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* İçerik bölümündeki paragrafların stilini ayarlar */
+.content-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Proje galerisi stilini ayarlar ve proje öğelerinin yan yana olmasını sağlar */
+.project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Proje öğelerinin stilini tanımlar */
+.project-item {
+    flex: 1 1 calc(33.333% - 20px);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Proje görsellerinin stilini ayarlar */
+.project-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #000000;
+}
+
+/* Proje başlıklarının stilini ayarlar */
+.project-item h2 {
+    font-size: 1.25rem;
+    margin: 10px 0;
+}
+
+/* Proje açıklamalarının stilini ayarlar */
+.project-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Yan menü (sidebar) stilini tanımlar */
+.sidebar {
+    flex: 1;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Yan menü başlıklarının stilini ayarlar */
+.sidebar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Yan menü başlıklarının altına renkli bir şerit ekler */
+.sidebar h3::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #007bff;
+}
+
+/* İletişim bilgileri stilini tanımlar */
+.contact-info {
+    position: relative;
+}
+
+/* İletişim ikonlarını yan yana hizalar */
+.contact-icons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* İletişim ikon kutularının stilini ayarlar */
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    cursor: pointer;
+}
+
+/* İletişim ikonlarının boyutunu ayarlar */
+.icon-box img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+/* İletişim ikon kutularındaki yazıların stilini ayarlar */
+.icon-box p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #333;
+}
+
+/* İletişim formunun stilini tanımlar */
+.contact-form-container {
+    margin-top: 20px;
+}
+
+/* İletişim formunun iç düzenini ayarlar */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* İletişim formu başlıklarının stilini ayarlar */
+.contact-form h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* İletişim formundaki etiketlerin stilini ayarlar */
+.contact-form label {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* İletişim formundaki giriş ve metin alanlarının stilini ayarlar */
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+
+/* İletişim formundaki gönderim butonunun stilini ayarlar */
+.contact-form button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* İletişim formundaki gönderim butonunun üzerine gelindiğinde stilini ayarlar */
+.contact-form button:hover {
+    background: #0056b3;
+}
+
+/* Footer (alt bilgi) stilini tanımlar */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #f2f2f2;
+    margin-top: 20px;
+}
+
+/* Footer alt bilgisi stilini ayarlar */
+footer p {
+    margin-bottom: 10px;
+}
+
+/* Footer içindeki sosyal medya bağlantılarının stilini ayarlar */
+footer .social-media a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+/* Yan menü (sidebar) için Medium yazıları bölümünü tanımlar */
+.medium-sidebar {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Medium yazıları başlığının stilini ayarlar */
+.medium-sidebar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Medium yazıları başlığının altına renkli bir şerit ekler */
+.medium-sidebar h3::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #007bff;
+}
+
+/* Medium yazıları bağlantılarının stilini ayarlar */
+.medium-sidebar a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Medium yazıları bağlantıları üzerine gelindiğinde stilini ayarlar */
+.medium-sidebar a:hover {
+    text-decoration: underline;
+}
+
+/* Medium feed stilini ayarlar */
+/* Medium feed stilini ayarlar */
+.medium-sidebar {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    /* Paddingi tekrar belirleyin */
+    margin-top: 20px;
+    max-height: none;
+    /* Maksimum yükseklik kaldırıldı */
+    overflow-y: hidden;
+    /* Taşan içeriği kaydırmayı kapatır */
+    height: auto;
+    /* İçeriğin yüksekliğini otomatik olarak ayarlar */
+}
+
+.medium-header {
+    display: flex;
+    /* Logo ve adresi yan yana yerleştirir */
+    align-items: center;
+    /* Ortalamak için */
+    margin-bottom: 10px;
+    /* Başlık ve içerik arasına boşluk ekler */
+}
+
+.medium-logo {
+    width: 40px;
+    /* Logo genişliği */
+    height: auto;
+    /* Oranları korur */
+    margin-right: 10px;
+    /* Logo ve adres arasında boşluk */
+}
+
+.medium-address {
+    font-size: 0.9rem;
+    /* Adres boyutu */
+    color: #007bff;
+    /* Adres rengi */
+}
+
+.medium-article {
+    margin-bottom: 15px;
+}
+
+.medium-article h4 {
+    font-size: 0.9rem;
+}
+
+.medium-article p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.medium-article a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.medium-article a:hover {
+    text-decoration: underline;
+}
+
+/* Medium feed stilini ayarlar */
+
+/* NLOG KART */
+
+.cards-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4rem;
+    padding: 4rem;
+    margin: 0 auto;
+    width: max-content;
+}
+
+.card {
+    font-family: 'Heebo';
+    --bg-filter-opacity: 0.5;
+    background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+    height: 20em;
+    width: 15em;
+    font-size: 1.5em;
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 5em -1em black;
+    transition: all 0.3s ease-in-out; /* Tüm geçişleri düzenleyin */
+    position: relative;
+    overflow: hidden;
+    border: 10px solid #ffffff;
+    text-decoration: none;
+}
+
+/* Hover Efektleri */
+.card:hover {
+    transform: rotate(0); /* Hoverda dönüş olmaması */
+    color: #000000; /* Yazı rengini siyah yap */
+}
+
+.card:hover .tags .tag {
+    background: rgba(0, 0, 0, 0.7); /* Hoverda etiket arka plan rengi */
+    color: white;
+}
+
+/* Arka Plan Efektleri */
+.card:before,
+.card:after {
+    content: '';
+    transform: scale(0);
+    transform-origin: top left;
+    border-radius: 50%;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    z-index: -5;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:before {
+    background: #000000;
+    width: 250%;
+    height: 250%;
+}
+
+.card:after {
+    background: white;
+    width: 200%;
+    height: 200%;
+}
+
+.card:hover:before,
+.card:hover:after {
+    transform: scale(1); /* Hoverda arka plan efektleri */
+}
+
+/* Tarih ve Etiketler */
+.card .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.75em;
+    padding: 1em;
+    line-height: 1em;
+    opacity: .8;
+}
+
+.card .tags {
+    display: flex;
+}
+
+.card .tags .tag {
+    font-size: 0.75em;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0.3rem;
+    padding: 0 0.5em;
+    margin-right: 0.5em;
+    line-height: 1.5em;
+    transition: background 0.3s ease-in-out; /* Arka plan rengi geçişi */
+}
+
+.card-grid-space .num {
+    font-size: 3em;
+    margin-bottom: 1.2rem;
+    margin-left: 1rem;
+}
+
+.info {
+    font-size: 1.2em;
+    display: flex;
+    padding: 1em 3em;
+    height: 3em;
+}
+
+.info img {
+    height: 3em;
+    margin-right: 0.5em;
+}
+
+.info h1 {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1285px) {
+    .cards-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .cards-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .info {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .cards-wrapper {
+        padding: 4rem 2rem;
+    }
+
+    .card {
+        max-width: calc(100vw - 4rem);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .info {
+        display: block;
+        text-align: center;
+    }
+
+    .info h1 {
+        margin: 0;
+    }
+}
+
+
+
+
+/* Header Stilleri */
+.header-outer {
+    background-color: #ffffff; /* Beyaz arka plan rengi */
+    padding: 1.5rem 2rem; /* Genişletilmiş padding */
+    border-bottom: none; /* Alt sınırı kaldır */
+    position: relative;
+}
+
+/* İçerik hizalaması */
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Portfolyo Bilgileri */
+.portfolio-info {
+    flex: 1;
+}
+
+.portfolio-title {
+    font-size: 3rem; /* Büyük başlık boyutu */
+    color: #000000; /* Siyah yazı rengi */
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; /* Modern yazı tipi */
+    font-weight: 700;
+}
+
+/* Sağdaki Bilgiler */
+.right-info {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Download CV Butonu */
+.download-cv {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    background: #ffffff; /* Beyaz arka plan */
+    color: #000000; /* Siyah yazı rengi */
+    text-decoration: none;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    transition: box-shadow 0.3s, transform 0.3s; /* Gölgelenme ve büyüme geçişi */
+    position: relative;
+    overflow: hidden; /* İçerik taşmalarını engeller */
+    gap: 0.75rem; /* İkon ile yazı arasındaki boşluk */
+}
+
+/* İkon Ayarları */
+.download-icon {
+    width: 1.4rem; /* İkonun boyutu, yazı boyutuyla eşleşir */
+    height: 1.4rem; /* İkonun boyutu, yazı boyutuyla eşleşir */
+}
+
+/* Hover Efekti */
+.download-cv:hover {
+    transform: scale(1.05); /* Hoverda hafifçe büyür */
+}
+
+
+
+
+/* Sosyal Medya İkonları */
+.social-media-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon {
+    margin: 0 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.social-icon img {
+    width: 2.5rem; /* İkonların boyutu */
+    height: 2.5rem;
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Hoverda büyüme */
+}
